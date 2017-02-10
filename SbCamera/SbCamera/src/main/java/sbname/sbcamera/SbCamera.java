@@ -3,9 +3,9 @@ package sbname.sbcamera;
 import android.app.Activity;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
+import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.view.Surface;
-import android.view.SurfaceView;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -37,7 +37,7 @@ public class SbCamera {
     private Camera mCamera;
     private Camera.CameraInfo mCameraInfo;
     private WeakReference<Activity> mCurrentWeakActivity;
-    private WeakReference<SurfaceView> mCurrentSurfaceView;
+    private WeakReference<GLSurfaceView> mCurrentSurfaceView;
     private final int mImageFormat = ImageFormat.NV21;
 
     private static class SbCameraHolder {
@@ -91,9 +91,9 @@ public class SbCamera {
         startPreviewWithSurface();
     }
 
-    public void bind(SurfaceView surfaceView, Activity currentActivity) {
+    public void bind(GLSurfaceView surfaceView, Activity currentActivity) {
         mCurrentWeakActivity = new WeakReference<Activity>(currentActivity);
-        mCurrentSurfaceView = new WeakReference<SurfaceView>(surfaceView);
+        mCurrentSurfaceView = new WeakReference<GLSurfaceView>(surfaceView);
     }
 
     public void releaseCamera() {
