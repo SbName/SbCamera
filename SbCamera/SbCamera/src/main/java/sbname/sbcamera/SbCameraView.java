@@ -159,6 +159,9 @@ public class SbCameraView extends GLSurfaceView implements GLSurfaceView.Rendere
         this.requestRender();
     }
 
+    public void release(){
+        SbCamera.getInstance().releaseCamera();
+    }
 
     private int getGlTextureId(){
         int[] texture = new int[1];
