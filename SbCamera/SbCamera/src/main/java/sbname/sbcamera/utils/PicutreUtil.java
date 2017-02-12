@@ -5,4 +5,6 @@ package sbname.sbcamera.utils;
  */
 
 public class PicutreUtil {
+    public static void scalePicutre(int scale){}
+
 }
