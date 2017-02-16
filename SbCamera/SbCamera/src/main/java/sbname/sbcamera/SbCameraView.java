@@ -21,6 +21,7 @@ public class SbCameraView extends GLSurfaceView implements  SbCameraPresenter {
     private int mPreviewWith = 0;
     private int mPreviewHeight = 0;
     private int mTextureId = -1;
+    private boolean mRenderSet = false;
     private SbRender mSbRender;
     private SurfaceTexture mSurfaceTexture;
     /**
@@ -50,6 +51,7 @@ public class SbCameraView extends GLSurfaceView implements  SbCameraPresenter {
         setEGLContextClientVersion(2);
         mSbRender  = new SbRender(this);
         setRenderer(mSbRender);
+        mRenderSet = true;
         setRenderMode(RENDERMODE_WHEN_DIRTY);
     }
 
