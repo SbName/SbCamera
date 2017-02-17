@@ -17,18 +17,7 @@ import sbname.sbcamera.SbCameraView;
 
 public class SbRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
     private static final int BYTES_PER_FLOAT = 4;
-    private static final float[] VERTICES ={
-            1.0f , 1.0f,
-            -1.0f, 1.0f,
-            1.0f ,-1.0f,
-            -1.0f,-1.0f
-            };
-    private static final float[] TEXCOORD = {
-            1.0f, 1.0f,
-            0.0f, 1.0f,
-            1.0f, 0.0f,
-            0.0f, 0.0f
-    };
+
     private int mTextureId;
     private WeakReference<SbCameraView> mSbCameraViewWeakReference;
     private SbDrawer mSbDrawer;

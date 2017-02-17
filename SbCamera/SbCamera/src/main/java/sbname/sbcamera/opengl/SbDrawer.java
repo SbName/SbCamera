@@ -26,6 +26,19 @@ public class SbDrawer {
                     "  gl_FragColor = texture2D(sTexture, vTextureCoord);\n" +
                     "}\n";
 
+    private static final float[] VERTICES ={
+            1.0f , 1.0f,
+            -1.0f, 1.0f,
+            1.0f ,-1.0f,
+            -1.0f,-1.0f
+    };
+    private static final float[] TEXCOORD = {
+            1.0f, 1.0f,
+            0.0f, 1.0f,
+            1.0f, 0.0f,
+            0.0f, 0.0f
+    };
+
     /**
      * create external texture
      * @return texture ID
