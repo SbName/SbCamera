@@ -15,14 +15,29 @@ import sbname.sbcamera.SbCameraView;
  * Created by WindPush on 2017/2/14.
  */
 
-public class SbRender implements GLSurfaceView.Renderer ,SurfaceTexture.OnFrameAvailableListener {
+public class SbRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
+    private static final int BYTES_PER_FLOAT = 4;
+    private static final float[] VERTICES ={
+            1.0f , 1.0f,
+            -1.0f, 1.0f,
+            1.0f ,-1.0f,
+            -1.0f,-1.0f
+            };
+    private static final float[] TEXCOORD = {
+            1.0f, 1.0f,
+            0.0f, 1.0f,
+            1.0f, 0.0f,
+            0.0f, 0.0f
+    };
     private int mTextureId;
     private WeakReference<SbCameraView> mSbCameraViewWeakReference;
     private SbDrawer mSbDrawer;
     private SurfaceTexture mSurfaceTexture;
-    public SbRender(SbCameraView sbCameraView){
+
+    public SbRender(SbCameraView sbCameraView) {
         mSbCameraViewWeakReference = new WeakReference<SbCameraView>(sbCameraView);
     }
+
     /**
      * Called when the surface is created or recreated.
      * <p>
@@ -49,8 +64,8 @@ public class SbRender implements GLSurfaceView.Renderer ,SurfaceTexture.OnFrameA
      */
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        GLES20.glClearColor(1.0f,0.0f,0.0f,0.0f);
-        mSbDrawer  = new SbDrawer();
+        GLES20.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+        mSbDrawer = new SbDrawer();
         mTextureId = SbDrawer.initTex();
         mSurfaceTexture = new SurfaceTexture(mTextureId);
         mSurfaceTexture.setOnFrameAvailableListener(this);
@@ -87,7 +102,7 @@ public class SbRender implements GLSurfaceView.Renderer ,SurfaceTexture.OnFrameA
      */
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        GLES20.glViewport(0,0,width,height);
+        GLES20.glViewport(0, 0, width, height);
 
     }
 
