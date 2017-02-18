@@ -3,6 +3,10 @@ package sbname.sbcamera.opengl;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
 /**
  * Created by WindPush on 2017/2/13.
  */
@@ -26,11 +30,11 @@ public class SbDrawer {
                     "  gl_FragColor = texture2D(sTexture, vTextureCoord);\n" +
                     "}\n";
 
-    private static final float[] VERTICES ={
-            1.0f , 1.0f,
+    private static final float[] VERTICES = {
+            1.0f, 1.0f,
             -1.0f, 1.0f,
-            1.0f ,-1.0f,
-            -1.0f,-1.0f
+            1.0f, -1.0f,
+            -1.0f, -1.0f
     };
     private static final float[] TEXCOORD = {
             1.0f, 1.0f,
@@ -39,10 +43,23 @@ public class SbDrawer {
             0.0f, 0.0f
     };
 
+
+    private final FloatBuffer mVerticesFloatBuffer;
+    private static final int FLOAT_SZ = Float.SIZE / 8;
+
     /**
      * create external texture
+     *
      * @return texture ID
      */
+
+    public SbDrawer() {
+        mVerticesFloatBuffer = ByteBuffer.allocateDirect(8 * FLOAT_SZ)
+                .order(ByteOrder.nativeOrder()).asFloatBuffer();
+        mVerticesFloatBuffer.put(VERTICES);
+        mVerticesFloatBuffer.flip();
+    }
+
     public static int initTex() {
         //初始化texture
         final int[] texId = new int[1];
